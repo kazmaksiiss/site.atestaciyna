@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Підтвердження замовлення - CORSAR</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+</head>
+<body>
+    <!-- Екран завантаження -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="loader-logo">
+                <div class="cooling-circle"></div>
+                <div class="cooling-circle"></div>
+                <div class="cooling-circle"></div>
+            </div>
+            <h2 class="loader-text">CORSAR</h2>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <p class="loader-subtext">Підтвердження замовлення...</p>
+        </div>
+    </div>
+
+    <!-- Шапка сайту -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html" style="color: inherit; text-decoration: none;">
+                    <span class="logo-icon">❄️</span>
+                    <span class="logo-text">CORSAR</span>
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="about.html">Про нас</a></li>
+                <li><a href="products.html">Продукція</a></li>
+                <li><a href="media.html">Медіа</a></li>
+                <li><a href="contact.html">Контакти</a></li>
+                <li><a href="cart.html" class="cart-link">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-text">Кошик</span>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a></li>
+            </ul>
+            <div class="burger" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Секція підтвердження -->
+    <section class="page-section">
+        <div class="container">
+            <div class="confirmation-content" style="max-width: 700px; margin: 0 auto; text-align: center; padding: 4rem 2rem;">
+                <!-- Анімація успіху -->
+                <div class="success-animation" style="margin-bottom: 2rem;">
+                    <div style="width: 150px; height: 150px; margin: 0 auto; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(157, 78, 221, 0.5); animation: successPulse 2s ease-in-out infinite;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" style="width: 80px; height: 80px;">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <h1 class="page-title" style="font-size: 3rem; margin-bottom: 1rem;">Дякуємо за підтвердження!</h1>
+                <p class="page-subtitle" style="font-size: 1.3rem; margin-bottom: 3rem;">Ваше замовлення успішно підтверджено</p>
+
+                <div style="background: var(--card-bg); padding: 3rem; border-radius: 20px; border: 1px solid var(--border-color); margin-bottom: 3rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
+                    <h2 style="color: var(--accent-color); margin-bottom: 1.5rem;">Замовлення <span id="orderId" style="color: var(--light-purple);">#...</span></h2>
+                    
+                    <div style="background: rgba(157, 78, 221, 0.1); padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                        <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                            Ми отримали підтвердження вашого замовлення і вже почали його обробку.
+                        </p>
+                        <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;">
+                            Наш менеджер зв'яжеться з вами <strong style="color: var(--accent-color);">протягом 1-2 годин</strong> для узгодження деталей доставки.
+                        </p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                        <div style="padding: 1.5rem; background: rgba(157, 78, 221, 0.1); border-radius: 10px;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📧</div>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Email підтвердження відправлено</p>
+                        </div>
+                        <div style="padding: 1.5rem; background: rgba(157, 78, 221, 0.1); border-radius: 10px;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📞</div>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Очікуйте дзвінка менеджера</p>
+                        </div>
+                        <div style="padding: 1.5rem; background: rgba(157, 78, 221, 0.1); border-radius: 10px;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚚</div>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Доставка 1-3 дні</p>
+                        </div>
+                    </div>
+
+                    <div style="border-top: 1px solid var(--border-color); padding-top: 2rem;">
+                        <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Що далі?</h3>
+                        <ol style="text-align: left; color: var(--text-secondary); line-height: 2; padding-left: 1.5rem;">
+                            <li>Перевірте свою електронну пошту для деталей замовлення</li>
+                            <li>Очікуйте дзвінка від нашого менеджера</li>
+                            <li>Підготуйте адресу доставки</li>
+                            <li>Отримайте ваше замовлення протягом 1-3 днів</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Кнопки дій -->
+                <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="index.html" class="btn btn-primary btn-large">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(180deg);">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                        <span>На головну</span>
+                    </a>
+                    <a href="products.html" class="btn btn-secondary btn-large">
+                        <span>Переглянути продукцію</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Контактна інформація -->
+                <div style="margin-top: 4rem; padding: 2rem; background: rgba(157, 78, 221, 0.05); border-radius: 15px; border: 1px solid var(--border-color);">
+                    <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Потрібна допомога?</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Зв'яжіться з нами будь-яким зручним способом:</p>
+                    <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; color: var(--text-secondary);">
+                        <div>📞 <strong style="color: var(--accent-color);">+380 44 123 45 67</strong></div>
+                        <div>📧 <strong style="color: var(--accent-color);">info@corsar.ua</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CORSAR</h4>
+                    <p>Провідний виробник систем охолодження для ПК. Інновації, якість, надійність з 2010 року.</p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook">📘</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="YouTube">📹</a>
+                        <a href="#" title="Twitter">🐦</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <ul>
+                        <li><a href="index.html">Головна</a></li>
+                        <li><a href="products.html">Продукція</a></li>
+                        <li><a href="about.html">Про нас</a></li>
+                        <li><a href="media.html">Медіа</a></li>
+                        <li><a href="contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Підтримка</h4>
+                    <ul>
+                        <li><a href="warranty.html">Гарантія</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="return.html">Повернення</a></li>
+                        <li><a href="contact.html">Зв'язок</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакти</h4>
+                    <ul class="footer-contacts">
+                        <li>📍 вул. Технологічна 15, Київ</li>
+                        <li>📞 +380 44 123 45 67</li>
+                        <li>✉️ info@corsar.ua</li>
+                        <li>🕐 Пн-Пт: 9:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CORSAR. Всі права захищені.</p>
+                <p class="footer-made">Зроблено з ❤️ в Україні</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        @keyframes successPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 20px 60px rgba(157, 78, 221, 0.5);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 25px 80px rgba(157, 78, 221, 0.7);
+            }
+        }
+    </style>
+
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        // Отримуємо ID замовлення з URL
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('order');
+            
+            if (orderId) {
+                document.getElementById('orderId').textContent = '#' + orderId;
+            }
+        });
+    </script>
+</body>
+</html>
