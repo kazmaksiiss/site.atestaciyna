@@ -162,7 +162,7 @@ function processCheckoutOrder(data) {
     
     // Генеруємо унікальний ID замовлення
     var orderId = 'ORD-' + Date.now();
-    var confirmUrl = window.location.origin + 'site.atestaciyna/confirm-order.html?order=' + orderId;
+    var confirmUrl = window.location.origin + 'https://kazmaksiiss.github.io/site.atestaciyna/confirm-order.html?order=' + orderId;
     
     var orderData = {
         customerName: data.name,
@@ -303,5 +303,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
 
 console.log('✅ checkout.js повністю завантажено');
