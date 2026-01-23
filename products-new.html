@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Продукція - CORSAIR</title>
+   <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='%2300d4ff' d='M 30 170 L 60 30 L 90 70 L 140 20 L 120 110 L 170 60 L 150 140 L 120 160 L 100 180 L 30 170 Z'/%3E%3C/svg%3E">
+</head>
+    <style>
+        .products-container {
+            max-width: 1400px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 20px;
+            color: #aaa;
+        }
+
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 30px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: rgba(0,212,255,0.2);
+            border-color: #00d4ff;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            color: #0a0e27;
+            border-color: #00d4ff;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: #1a1d2e;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,212,255,0.3);
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1d2e, #0a0e27);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .product-category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,212,255,0.9);
+            color: #0a0e27;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .product-specs-mini {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+            font-size: 13px;
+            color: #888;
+        }
+
+        .product-specs-mini li {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .product-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-details {
+            flex: 1;
+            padding: 12px 20px;
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-details:hover {
+            background: #00d4ff;
+            color: #0a0e27;
+        }
+
+        .btn-add-cart {
+            flex: 1;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            color: #0a0e27;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,212,255,0.4);
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайту -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="45" height="45" class="logo-svg">
+                        <defs>
+                            <style>
+                                @keyframes drawLogo {
+                                    0%, 100% { stroke-dashoffset: 1000; }
+                                    50% { stroke-dashoffset: 0; }
+                                }
+                                .logo-path {
+                                    fill: none;
+                                    stroke: #00d4ff;
+                                    stroke-width: 4;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-dasharray: 1000;
+                                    stroke-dashoffset: 1000;
+                                    animation: drawLogo 4s ease-in-out infinite;
+                                    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.5));
+                                }
+                                .logo-fill {
+                                    fill: url(#logoGradient);
+                                    opacity: 0.15;
+                                }
+                            </style>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path class="logo-fill" d="M 30 170 L 60 30 L 90 70 L 140 20 L 120 110 L 170 60 L 150 140 L 120 160 L 100 180 L 30 170 Z"/>
+                        <path class="logo-path" d="M 30 170 L 60 30 L 90 70 L 140 20 L 120 110 L 170 60 L 150 140 L 120 160 L 100 180 L 30 170 Z"/>
+                    </svg>
+                    <span class="logo-text">CORSAIR</span>
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="about.html">Про нас</a></li>
+                <li><a href="products-new.html" class="active">Продукція</a></li>
+                <li><a href="media-new.html">Медіа</a></li>
+                <li><a href="contact.html">Контакти</a></li>
+                <li><a href="cart.html" class="cart-link">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-text">Кошик</span>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a></li>
+            </ul>
+            <div class="burger" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="products-container">
+        <div class="page-header">
+            <h1>Наша продукція</h1>
+            <p>Високоефективні системи охолодження для вашого ПК</p>
+        </div>
+
+        <div class="filter-section">
+            <button class="filter-btn active" onclick="filterProducts('all')">Всі товари</button>
+            <button class="filter-btn" onclick="filterProducts('liquid')">Рідинне охолодження</button>
+            <button class="filter-btn" onclick="filterProducts('air')">Повітряне охолодження</button>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CORSAIR</h4>
+                    <p>Провідний виробник систем охолодження для ПК. Інновації, якість, надійність з 2010 року.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <ul>
+                        <li><a href="index.html">Головна</a></li>
+                        <li><a href="products-new.html">Продукція</a></li>
+                        <li><a href="about.html">Про нас</a></li>
+                        <li><a href="contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CORSAIR. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="products-data.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        let currentFilter = 'all';
+
+        // Завантаження продуктів
+        function loadProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            products.forEach(product => {
+                const productType = product.category.includes('Рідинне') ? 'liquid' : 'air';
+                
+                if (currentFilter !== 'all' && productType !== currentFilter) {
+                    return;
+                }
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-type', productType);
+
+                card.innerHTML = `
+                    <div class="product-image-wrapper">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        <div class="product-category-badge">${product.category}</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <ul class="product-specs-mini">
+                            ${product.specs.slice(0, 3).map(spec => `<li>${spec}</li>`).join('')}
+                        </ul>
+                        <div class="product-footer">
+                            <div class="product-price">${product.price.toLocaleString('uk-UA')} грн</div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="product-detail.html?id=${product.id}" class="btn-details">Дізнатись більше</a>
+                            <button class="btn-add-cart" onclick="addToCart(${product.id}, 1)">В кошик</button>
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Фільтрація продуктів
+        function filterProducts(type) {
+            currentFilter = type;
+            
+            // Оновлюємо активну кнопку
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            loadProducts();
+        }
+
+        // Ініціалізація
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>
